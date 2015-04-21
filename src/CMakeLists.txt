@@ -128,3 +128,11 @@ if (WITH_LIBPDF)
     target_link_libraries(freshwrapper-libpdf ${REQ_LIBRARIES})
     target_link_libraries(dep_check freshwrapper-libpdf)
 endif()
+
+# wrapper for Widevine CDM
+set(WITH_WIDEVINE FALSE CACHE STRING "generate wrapper for Widevine")
+if (WITH_WIDEVINE)
+    add_library(freshwrapper-widevine SHARED ${COMMON_OBJ_LIST} config_widevine.c)
+    target_link_libraries(freshwrapper-widevine ${REQ_LIBRARIES})
+    target_link_libraries(dep_check freshwrapper-widevine)
+endif()
